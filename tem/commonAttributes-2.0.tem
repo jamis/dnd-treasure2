@@ -49,14 +49,30 @@
 						 "value is specified, any difference between the hoard's value and the treasure's " +
 						 "value will be filled with gold pieces." );
 		}
+
+		function explainSources() {
+			alert( "Sources:\n\n" +
+			       "This lists the possible sources that the treasure generator may draw from to " +
+						 "generate any given treasure.  If none are selected, the generator assumes that " +
+						 "ALL sources are to be used.  Select the sources that you want the generator to " +
+						 "draw from by clicking on the name of the source in the list.  To select multiple " +
+						 "sources, hold down the <ctrl> key while clicking." );
+		}
 	//end-->
 </SCRIPT>
 
-          <A HREF="javascript:explainSeed()">Random seed</A>:
-					  <INPUT TYPE="TEXT" NAME="seed" VALUE="" SIZE=8> (current seed: <I><!--%SEED%--></I>)<BR>
-					<A HREF="javascript:explainMinimum()">Minimum Treasure Value</A>:
-						<INPUT TYPE="TEXT" NAME="minval" VALUE="<!--%MINIMUMVALUE%-->" SIZE=8> gp<BR>
-					<A HREF="javascript:explainMaximum()">Maximum Treasure Value</A>:
-						<INPUT TYPE="TEXT" NAME="maxval" VALUE="<!--%MAXIMUMVALUE%-->" SIZE=8> gp<BR>
-					<INPUT TYPE="CHECKBOX" NAME="fillcoins" VALUE="Y" <!--%FILL:Y%-->>
-					  <A HREF="javascript:explainFill()">Fill Difference With Coins</A>
+					<table border="0"><tr><td class="NORMAL">
+						<A HREF="javascript:explainSeed()">Random seed</A>:
+							<INPUT TYPE="TEXT" NAME="seed" VALUE="" SIZE=8> (current seed: <I><!--%SEED%--></I>)<BR>
+						<A HREF="javascript:explainMinimum()">Minimum Treasure Value</A>:
+							<INPUT TYPE="TEXT" NAME="minval" VALUE="<!--%MINIMUMVALUE%-->" SIZE=8> gp<BR>
+						<A HREF="javascript:explainMaximum()">Maximum Treasure Value</A>:
+							<INPUT TYPE="TEXT" NAME="maxval" VALUE="<!--%MAXIMUMVALUE%-->" SIZE=8> gp<BR>
+						<INPUT TYPE="CHECKBOX" NAME="fillcoins" VALUE="Y" <!--%FILL:Y%-->>
+							<A HREF="javascript:explainFill()">Fill Difference With Coins</A><BR>
+					</td><td class="NORMAL">
+					  <a href="javascript:explainSources()">Sources:</a><br />
+						<SELECT NAME="sources" MULTIPLE SIZE="5">
+							<!--%SOURCES%-->
+						</SELECT>
+					</td></tr></table>
