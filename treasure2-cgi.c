@@ -459,10 +459,10 @@ void randomTreasure( BSKDatabase* db ) {
   showsource = qValueDefault( "", "showsource" );
 	minValBuf[0] = maxValBuf[0] = 0;
 	if( minVal > 0 ) {
-		sprintf( minValBuf, "%.2g", minVal );
+		sprintf( minValBuf, "%d", (long)minVal );
   }
 	if( maxVal > 0 ) {
-		sprintf( maxValBuf, "%.2g", maxVal ); 
+		sprintf( maxValBuf, "%d", (long)maxVal ); 
   }
   sprintf( buffer, "%d", level );
   sprintf( url, "%s?%s", CGINAME, getenv( "QUERY_STRING" ) );
