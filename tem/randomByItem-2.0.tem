@@ -1,0 +1,241 @@
+<HTML>
+  <HEAD>
+    <TITLE>Treasure Generator - Random by Item Type</TITLE>
+    <!--%STARTHDR%-->
+  <SCRIPT LANGUAGE="Javascript" SRC="http://dynamic.gamespy.com/~generators/getCSS.pl"></SCRIPT>
+  
+<!--%ENDHDR%-->
+		<SCRIPT LANGUAGE="Javascript">
+		  <!--start
+			  function explainMagnitude() {
+				  alert( "Magnitude:\n\n" +
+					       "The magnitude of an item represents its relative power.  A +1 short sword, for instance, " +
+								 "is not as impressive a weapon as a +5 vorpal longsword.  'Minor' items are relatively " +
+								 "weak and inexpensive, while 'Major' items are very powerful and very valuable.  You may " +
+								 "select more than one magnitude here, and the generator will randomly choose from among " +
+								 "the selected magnitudes for each item generated.  If a particular item has no entries " +
+								 "for one of the magnitudes you selected (like rods and staves, for which there are no minor " +
+								 "items), then you may not get any of that type of item, so beware!" );
+				}
+				
+				function explainType() {
+				  alert( "Type:\n\n" +
+					       "Items come in different types, and there is one checkbox for each of the different types.  " +
+								 "You may select multiple types to generate, and the generator will randomly choose from among " +
+								 "the selected types." );
+				}
+
+				function explainCount() {
+				  alert( "Count:\n\n" +
+					       "The number you enter here is the number of items to generate.  Note that if there are no items " +
+								 "for one of the magnitudes you selected, you may get less than the number of items you selected. " +
+								 "Also, if you have set the maximum treasure value option (q.v.), then you not get all the items " +
+								 "you requested, either." );
+				}
+
+				function explainForceInt() {
+					alert( "Always Intelligent:\n\n" +
+					       "Certain magic items (armor, weapons, rings, rods, and wondrous items) may be intelligent.  It is " +
+								 "usually a very small percentage of the items that are intelligent hower (about 1% for most items, " +
+								 "and as high as 25% for melee weapons).  Sometimes, however, you specifically want an intelligent " +
+								 "item.  In that case, check this box, and all generated items that can be intelligent, will be " +
+								 "intelligent." );
+				}
+			//end-->
+		</SCRIPT>
+  </HEAD>
+
+  <BODY BGCOLOR="#FFFFFF">
+  <!--%STARTCGIHDR%-->
+  <TABLE BORDER="0" WIDTH="100%">
+    <TR><TD WIDTH="297" VALIGN="TOP"><A HREF="http://www.rpgplanet.com/dnd3e/generators"><IMG SRC="img/logo1.jpg" WIDTH="297" HEIGHT="207" ALT="Jamis Buck's RPG Generators" BORDER="0"></A></TD>
+        <TD VALIGN="TOP" WIDTH="468">
+          <IFRAME SRC="http://ads.gamespy.com/hserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique" NORESIZE SCROLLING=NO HSPACE=0 VSPACE=0 FRAMEBORDER=0 MARGINHEIGHT=0 MARGINWIDTH=0 WIDTH=468 HEIGHT=60>
+            <SCRIPT SRC="http://ads.gamespy.com/jserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique"></SCRIPT>
+            <NOSCRIPT>
+              <A HREF="http://ads.gamespy.com/jserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique"><IMG SRC="http://ads.gamespy.com/jserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique"></A>
+            </NOSCRIPT>
+          </IFRAME>
+          <TABLE BORDER="0" WIDTH="468" CELLSPACING="0">
+            <TR><TD CLASS="HEADER">Featured Generators:</TD></TR>
+            <TR><TD CLASS="NORMAL">
+              <UL>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/treasure2.cgi">Treasure <B>2.0</B></A> <I>(D&amp;D)</I> -
+								    <B>New!</B>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/npc.cgi">NPC</A> <I>(D&amp;D)</I>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/towns.cgi">Town</A> <I>(D&amp;D)</I>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/dungeon.cgi">Dungeon</A> <I>(D&amp;D)</I>
+              </UL>
+            </TD></TR>
+          </TABLE>
+        </TD>
+    </TR>
+  </TABLE>
+  
+<!--%ENDCGIHDR%-->
+
+  <TABLE BORDER="0" WIDTH="100%" CLASS="NAV" CELLSPACING="0">
+    <TR>
+      <!--%STARTMENU%-->
+      <TD WIDTH="150" VALIGN="TOP">
+        <TABLE BORDER="0" WIDTH="100%">
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e">My Host</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            <A HREF="http://www.rpgplanet.com/dnd3e">Eric Noah's Unofficial 3rd Edition D&amp;D News</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/index.html">News/Main Page</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/archive.html">News Archive</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://dynamic.gamespy.com/~generators/selectCSS.pl">Change Site Colors</A></TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/generators.html">Generators</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/treasure2.cgi">Treasure <B>2.0</B></A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/npc.cgi">NPC</A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/towns.cgi">Town</A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/dungeon.cgi">Dungeon</A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/generators.html">Others</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html">Downloads</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#windows">Windows</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#mac">Macintosh</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#linux">Linux/Unix</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#other">Others</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html">Basilisk</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html">Introduction</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/scripting/dff.html">Data File Format</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/scripting/script.html">Scripting</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/tutorial/index.html">Tutorials</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/api/index.html">C Language API</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/help.html">Help</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/faq.html">FAQ</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/bio.html">About Jamis</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/developers.html">For Developers</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html">Basilisk</A><BR>
+            &nbsp;&nbsp;- <A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html#dl">Download</A><BR>
+            &nbsp;&nbsp;- <A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/api/index.html">C API Docs</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/source.html">Generator Sources</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/link.html">Links</A></TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://dynamic.gamespy.com/~dnd3e/Ultimate.cgi?action=intro&category=3&BypassCookie=true">Message Boards</A></TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/contact.html">Contact Info</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/contact.html#donations">Donations</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR">&nbsp;</TD></TR>
+        </TABLE>
+      </TD>
+      
+<!--%ENDMENU%-->
+      <!-- Divider -->
+      <TD ROWSPAN="2" CLASS="NORMAL" WIDTH="10">&nbsp;</TD>
+      <!-- Data section -->
+      <TD ROWSPAN="2" WIDTH="620" CLASS="NORMAL" VALIGN="TOP">
+			  <H2>Treasure Generator 2.0</H2>
+        [ <A HREF="<!--%CGINAME%-->?mode=random">Treasure By Encounter Level</A> | <B>Treasure By Item Type</B> ]
+        <P>
+				<BLOCKQUOTE>
+					<!--%BLURB%-->
+				</BLOCKQUOTE>
+
+        <P>
+
+        Please select the magnitude of the item, as well as it's type, and press
+        the "Generate Treasure" button.  You can also enter a number in the "count"
+        text box to generate up to 100 different items.
+
+        <CENTER>
+        <FORM NAME="treasure" ACTION="<!--%CGINAME%-->" METHOD="GET">
+          <TABLE BORDER=0 CELLPADDING=0 CELLSPACING=0><TR><TD CLASS="DIVIDER">
+            <TABLE BORDER=0 CELLPADDING=3 CELLSPACING=2 CLASS="NORMAL">
+              <TR><TD CLASS="NORMAL"><B><A HREF="javascript:explainMagnitude()">Magnitude</A></B></TD>
+							    <TD CLASS="NORMAL" COLSPAN="3"><B><A HREF="javascript:explainType()">Type</A></B></TD></TR>
+              <TR>
+                <TD CLASS="NORMAL" VALIGN="TOP">
+                  <INPUT TYPE="CHECKBOX" NAME="minor" VALUE="Y" <!--%MINOR:Y%-->> Minor<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="medium" VALUE="Y" <!--%MEDIUM:Y%-->> Medium<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="major" VALUE="Y" <!--%MAJOR:Y%-->> Major
+                </TD>
+                <TD CLASS="NORMAL" VALIGN="TOP">
+                  <INPUT TYPE="CHECKBOX" NAME="armor" VALUE="Y" <!--%ARMOR:Y%-->> Armor<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="potion" VALUE="Y" <!--%POTION:Y%-->> Potion<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="ring" VALUE="Y" <!--%RING:Y%-->> Ring<BR>
+                </TD>
+                <TD CLASS="NORMAL" VALIGN="TOP">
+                  <INPUT TYPE="CHECKBOX" NAME="rod" VALUE="Y" <!--%ROD:Y%-->> Rod<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="scroll" VALUE="Y" <!--%SCROLL:Y%-->> Scroll<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="staff" VALUE="Y" <!--%STAFF:Y%-->> Staff<BR>
+                </TD>
+                <TD CLASS="NORMAL" VALIGN="TOP">
+                  <INPUT TYPE="CHECKBOX" NAME="wand" VALUE="Y" <!--%WAND:Y%-->> Wand<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="weapon" VALUE="Y" <!--%WEAPON:Y%-->> Weapon<BR>
+                  <INPUT TYPE="CHECKBOX" NAME="wondrous" VALUE="Y" <!--%WONDROUS:Y%-->> Wondrous Item
+                </TD>
+              </TR>
+              <TR><TD COLSPAN="4" CLASS="NORMAL" ALIGN=CENTER>
+							    <A HREF="javascript:explainCount()">Count</A>:
+										<INPUT TYPE="TEXT" NAME="count" VALUE="<!--%COUNT%-->" SIZE=5></TD></TR>
+              <TR><TD COLSPAN="4" CLASS="NORMAL" ALIGN=CENTER>
+									<INPUT TYPE="CHECKBOX" NAME="intelligent" VALUE="Y" <!--%INT:Y%-->>
+										<A HREF="javascript:explainForceInt()">Always Intelligent</A></TD></TR>
+              <TR><TD COLSPAN="4" CLASS="NORMAL" ALIGN=CENTER>
+							  <!--%COMMON:tem/commonAttributes-2.0.tem%-->
+							</TD></TR>
+              <TR><TD COLSPAN="4" CLASS="NORMAL" ALIGN=CENTER><INPUT TYPE="SUBMIT" VALUE="Generate Treasure"></TD></TR>
+            </TABLE>
+          </TD></TR>
+          </TABLE>
+          <INPUT TYPE="HIDDEN" NAME="mode" VALUE="specific">
+        </FORM>
+        </CENTER>
+
+        <SPAN CLASS="NORMAL"><A HREF="<!--%CGINAME%-->">Restart the treasure generator.</A></SPAN>
+        <P>
+
+        <TABLE BORDER=0 WIDTH=100% CELLPADDING=0 CELLSPACING=0><TR><TD CLASS="DIVIDER">
+          <TABLE BORDER=0 WIDTH=100% CELLPADDING=3 CELLSPACING=1><TR><TD CLASS="NORMAL">
+    <!--%TREASURE%-->
+          </TD></TR></TABLE>
+        </TD></TR></TABLE>
+
+				<P>
+
+        <SPAN CLASS="NORMAL">
+        This treasure generator has had <B><!--%COUNTER%--></B> hits since 14 Feb 2001!
+        </SPAN>
+        <!--%STARTFTR%-->
+        <HR SIZE="1">
+        <DIV CLASS="NORMAL">
+          <i>Dungeons & Dragons</i>&reg; and <i>D&D</i>&reg; are trademarks 
+          owned by <A HREF="http://www.wizards.com">Wizards of the Coast</A>.
+        </DIV>
+        <!--%ENDFTR%-->
+      </TD>
+    </TR>
+    <TR>
+      <TD VALIGN="BOTTOM" CLASS="NAVNORM" WIDTH="150">
+        <HR SIZE="1" WIDTH="150">
+        Copyright &copy; 2001<BR>
+        Jamis Buck.  All rights reserved.
+      </TD>
+    </TR>
+  </TABLE>
+
+   <IFRAME 
+     src="http://www.rpgplanet.com/dnd3e/generators/counter/counter.html" 
+     width="1"
+     height="1" 
+     frameborder="0" 
+     scrolling="no">
+   </IFRAME>
+
+</BODY>
+
+</HTML>

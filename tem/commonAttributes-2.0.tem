@@ -1,0 +1,62 @@
+<SCRIPT LANGUAGE="Javascript">
+  <!--begin
+		function explainSeed() {
+			alert( "Random Seed:\n\n" +
+						 "You can think of the random seed as a \"bookmark\".  If you remember this number " +
+						 "for a treasure that you generate, along with the other parameters that you set " +
+						 "(like encounter level, minimum and maximum treasure values, etc.) and enter them " +
+						 "all in again (random seed included), you can generate the exact same treasure " +
+						 "again.\n\n" +
+						 "Why is this useful?  Primary for debugging:  if you find an error, you can tell the " +
+						 "programmer what settings you used, and the random seed, and the programmer can " +
+						 "exactly duplicate the error you saw.  It makes it much easier to find and eliminate " +
+						 "bugs.  But the random seed can also be useful if you want to share or remember " +
+						 "a treasure you generated when you aren't near a printer.  You can e-mail a friend " +
+						 "the settings and the random seed so they can generate the treasure and see the " +
+						 "incredible hoard for themselves.  Experiment!" );
+		}
+
+		function explainMinimum() {
+			alert( "Minimum Treasure Value:\n\n" +
+						 "The minimum treasure value of a treasure hoard indicates the minimum gp " +
+						 "that you would like the treasure to be.  The generator will try very hard " +
+						 "to meet this requirement, but if it cannot find a hoard after several tries " +
+						 "that is greater than or equal to this amount, it will give up and return the " +
+						 "treasure that it came up with.  Thus -- do not take this feature to mean that " +
+						 "the treasure will never be less than this amount!  If you absolutely refuse " +
+						 "to accept treasures less than this amount, you should check the \"Fill " +
+						 "Difference With Coins\" option (q.v.)." );
+		}
+
+		function explainMaximum() {
+			alert( "Maximum Treasure Value:\n\n" +
+						 "The maximum treasure value of a treasure hoard indicates the maximum gp " +
+						 "that you would like the treasure to be.  The generator will try very hard " +
+						 "to meet this requirement, but if it cannot find a hoard after several tries " +
+						 "that is less than this amount, it will give up and return the " +
+						 "treasure that it came up with.  Thus -- do not take this feature to mean that " +
+						 "the treasure will never be greater than this amount!\n\n" +
+						 "Also, if you are using the \"generate by item type\" option, setting a " +
+						 "maximum treasure value may result in fewer items being generated." );
+		}
+
+		function explainFill() {
+			alert( "Fill Difference With Coins:\n\n" +
+						 "If a treasure meeting the minimum treasure value (q.v.) cannot be found, the " +
+						 "default action is to give up and return whatever treasure was generated.  If you " +
+						 "want to make sure that the treasure is always at least equal to the minimum " +
+						 "value, you can select this option.  If it is selected and a minimum treasure " +
+						 "value is specified, any difference between the hoard's value and the treasure's " +
+						 "value will be filled with gold pieces." );
+		}
+	//end-->
+</SCRIPT>
+
+          <A HREF="javascript:explainSeed()">Random seed</A>:
+					  <INPUT TYPE="TEXT" NAME="seed" VALUE="" SIZE=8> (current seed: <I><!--%SEED%--></I>)<BR>
+					<A HREF="javascript:explainMinimum()">Minimum Treasure Value</A>:
+						<INPUT TYPE="TEXT" NAME="minval" VALUE="<!--%MINIMUMVALUE%-->" SIZE=8> gp<BR>
+					<A HREF="javascript:explainMaximum()">Maximum Treasure Value</A>:
+						<INPUT TYPE="TEXT" NAME="maxval" VALUE="<!--%MAXIMUMVALUE%-->" SIZE=8> gp<BR>
+					<INPUT TYPE="CHECKBOX" NAME="fillcoins" VALUE="Y" <!--%FILL:Y%-->>
+					  <A HREF="javascript:explainFill()">Fill Difference With Coins</A>

@@ -1,0 +1,249 @@
+<HTML>
+  <HEAD>
+    <TITLE>Treasure Generator - Random by Encounter Level</TITLE>
+    <!--%STARTHDR%-->
+  <SCRIPT LANGUAGE="Javascript" SRC="http://dynamic.gamespy.com/~generators/getCSS.pl"></SCRIPT>
+  
+<!--%ENDHDR%-->
+    <SCRIPT LANGUAGE="Javascript">
+		  <!--begin
+
+				function explainEL() {
+				  alert( "Encounter Level:\n\n" +
+					       "The encounter level represents the relative difficulty of an encounter.  An ancient " +
+								 "wyrm is going to be a lot tougher than a lone kobold, for instance, and you would " +
+								 "expect the more difficult encounter to reap a greater treasure.  That's what this " +
+								 "is all about -- you select the encounter level to generate a commensurate treasure.  " +
+								 "The higher the encounter level, the more difficult the encounter, so you can expect " +
+								 "to see larger and more exotic treasures as you increase the encounter level." );
+				}
+
+				function explainCoins() {
+				  alert( "Coins:\n\n" +
+					       "You may modify the number of coins generated with this number.  This is the percentage " +
+								 "of coins to generate, where 100% is the default.  By increasing this number, your " +
+								 "average treasure hoard will have more coins, and by decreasing it, the average hoard " +
+								 "will have fewer.  Setting this number to zero will result in no coins being generated." );
+				}
+
+				function explainGoods() {
+				  alert( "Goods:\n\n" +
+					       "You may modify the number of goods generated with this number.  Goods are typically " +
+								 "gems and art objects.  This is the percentage of such things to generate, where 100% " +
+								 "is the default.  By increasing this number, your average treasure hoard will have more " +
+								 "goods, and by decreasing it, the average hoard will have fewer.  Setting this number to " +
+								 "zero will result in no goods being generated." );
+				}
+
+				function explainItems() {
+				  alert( "Items:\n\n" +
+					       "You may modify the number of items generated with this number.  Items are typically " +
+								 "mundane or magical objects.  This is the percentage of such things to generate, where 100% " +
+								 "is the default.  By increasing this number, your average treasure hoard will have more " +
+								 "items, and by decreasing it, the average hoard will have fewer.  Setting this number to " +
+								 "zero will result in no items being generated." );
+				}
+
+			//end-->
+		</SCRIPT>
+  </HEAD>
+
+  <BODY>
+  <BODY BGCOLOR="#FFFFFF">
+  <!--%STARTCGIHDR%-->
+  <TABLE BORDER="0" WIDTH="100%">
+    <TR><TD WIDTH="297" VALIGN="TOP"><A HREF="http://www.rpgplanet.com/dnd3e/generators"><IMG SRC="img/logo1.jpg" WIDTH="297" HEIGHT="207" ALT="Jamis Buck's RPG Generators" BORDER="0"></A></TD>
+        <TD VALIGN="TOP" WIDTH="468">
+          <IFRAME SRC="http://ads.gamespy.com/hserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique" NORESIZE SCROLLING=NO HSPACE=0 VSPACE=0 FRAMEBORDER=0 MARGINHEIGHT=0 MARGINWIDTH=0 WIDTH=468 HEIGHT=60>
+            <SCRIPT SRC="http://ads.gamespy.com/jserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique"></SCRIPT>
+            <NOSCRIPT>
+              <A HREF="http://ads.gamespy.com/jserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique"><IMG SRC="http://ads.gamespy.com/jserver/SITE=RP/GENRE=RPG/AREA=HOSTED/AAMSZ=IAB_FULL_BANNER?unique"></A>
+            </NOSCRIPT>
+          </IFRAME>
+          <TABLE BORDER="0" WIDTH="468" CELLSPACING="0">
+            <TR><TD CLASS="HEADER">Featured Generators:</TD></TR>
+            <TR><TD CLASS="NORMAL">
+              <UL>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/treasure2.cgi">Treasure <B>2.0</B></A> <I>(D&amp;D)</I> -
+								    <B>New!</B>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/npc.cgi">NPC</A> <I>(D&amp;D)</I>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/towns.cgi">Town</A> <I>(D&amp;D)</I>
+                <LI><A HREF="http://dynamic.gamespy.com/~generators/dungeon.cgi">Dungeon</A> <I>(D&amp;D)</I>
+              </UL>
+            </TD></TR>
+          </TABLE>
+        </TD>
+    </TR>
+  </TABLE>
+  
+<!--%ENDCGIHDR%-->
+
+  <TABLE BORDER="0" WIDTH="100%" CLASS="NAV" CELLSPACING="0">
+    <TR>
+      <!--%STARTMENU%-->
+      <TD WIDTH="150" VALIGN="TOP">
+        <TABLE BORDER="0" WIDTH="100%">
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e">My Host</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            <A HREF="http://www.rpgplanet.com/dnd3e">Eric Noah's Unofficial 3rd Edition D&amp;D News</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/index.html">News/Main Page</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/archive.html">News Archive</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://dynamic.gamespy.com/~generators/selectCSS.pl">Change Site Colors</A></TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/generators.html">Generators</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/treasure2.cgi">Treasure <B>2.0</B></A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/npc.cgi">NPC</A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/towns.cgi">Town</A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://dynamic.gamespy.com/~generators/dungeon.cgi">Dungeon</A> <I>(D&amp;D)</I><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/generators.html">Others</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html">Downloads</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#windows">Windows</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#mac">Macintosh</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#linux">Linux/Unix</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/downloads.html#other">Others</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html">Basilisk</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html">Introduction</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/scripting/dff.html">Data File Format</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/scripting/script.html">Scripting</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/tutorial/index.html">Tutorials</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/api/index.html">C Language API</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/help.html">Help</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/faq.html">FAQ</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/bio.html">About Jamis</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/developers.html">For Developers</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html">Basilisk</A><BR>
+            &nbsp;&nbsp;- <A HREF="http://www.rpgplanet.com/dnd3e/generators/basilisk.html#dl">Download</A><BR>
+            &nbsp;&nbsp;- <A HREF="http://www.rpgplanet.com/dnd3e/generators/docs/api/index.html">C API Docs</A><BR>
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/source.html">Generator Sources</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/link.html">Links</A></TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://dynamic.gamespy.com/~dnd3e/Ultimate.cgi?action=intro&category=3&BypassCookie=true">Message Boards</A></TD></TR>
+          <TR><TD CLASS="NAVHDR"><A HREF="http://www.rpgplanet.com/dnd3e/generators/contact.html">Contact Info</A></TD></TR>
+          <TR><TD CLASS="NAVNORM">
+            &nbsp;<A HREF="http://www.rpgplanet.com/dnd3e/generators/contact.html#donations">Donations</A><BR>
+          </TD></TR>
+          <TR><TD CLASS="NAVHDR">&nbsp;</TD></TR>
+        </TABLE>
+      </TD>
+      
+<!--%ENDMENU%-->
+      <!-- Divider -->
+      <TD ROWSPAN="2" CLASS="NORMAL" WIDTH="10">&nbsp;</TD>
+      <!-- Data section -->
+      <TD ROWSPAN="2" WIDTH="620" CLASS="NORMAL" VALIGN="TOP">
+			  <H2>Treasure Generator 2.0</H2>
+				<P>
+        [ <B>Treasure By Encounter Level</B> | <A HREF="<!--%CGINAME%-->?mode=specific">Treasure By Item Type</A> ]
+        <P>
+				<BLOCKQUOTE>
+					<!--%BLURB%-->
+				</BLOCKQUOTE>
+
+        <P>
+        Please select the level of the encounter for which you want to award
+        treasure, then click the "Generate Treasure" button.
+
+        <FORM NAME="treasure" ACTION="<!--%CGINAME%-->" METHOD="GET">
+          <A HREF="javascript:explainEL()">Encounter level</A>:
+          <SELECT NAME="level">
+            <OPTION VALUE="1" <!--%LEVEL:1%-->>1</OPTION>
+            <OPTION VALUE="2" <!--%LEVEL:2%-->>2</OPTION>
+            <OPTION VALUE="3" <!--%LEVEL:3%-->>3</OPTION>
+            <OPTION VALUE="4" <!--%LEVEL:4%-->>4</OPTION>
+            <OPTION VALUE="5" <!--%LEVEL:5%-->>5</OPTION>
+            <OPTION VALUE="6" <!--%LEVEL:6%-->>6</OPTION>
+            <OPTION VALUE="7" <!--%LEVEL:7%-->>7</OPTION>
+            <OPTION VALUE="8" <!--%LEVEL:8%-->>8</OPTION>
+            <OPTION VALUE="9" <!--%LEVEL:9%-->>9</OPTION>
+            <OPTION VALUE="10" <!--%LEVEL:10%-->>10</OPTION>
+            <OPTION VALUE="11" <!--%LEVEL:11%-->>11</OPTION>
+            <OPTION VALUE="12" <!--%LEVEL:12%-->>12</OPTION>
+            <OPTION VALUE="13" <!--%LEVEL:13%-->>13</OPTION>
+            <OPTION VALUE="14" <!--%LEVEL:14%-->>14</OPTION>
+            <OPTION VALUE="15" <!--%LEVEL:15%-->>15</OPTION>
+            <OPTION VALUE="16" <!--%LEVEL:16%-->>16</OPTION>
+            <OPTION VALUE="17" <!--%LEVEL:17%-->>17</OPTION>
+            <OPTION VALUE="18" <!--%LEVEL:18%-->>18</OPTION>
+            <OPTION VALUE="19" <!--%LEVEL:19%-->>19</OPTION>
+            <OPTION VALUE="20" <!--%LEVEL:20%-->>20</OPTION>
+            <OPTION VALUE="21" <!--%LEVEL:21%-->>21</OPTION>
+            <OPTION VALUE="22" <!--%LEVEL:22%-->>22</OPTION>
+            <OPTION VALUE="23" <!--%LEVEL:23%-->>23</OPTION>
+            <OPTION VALUE="24" <!--%LEVEL:24%-->>24</OPTION>
+            <OPTION VALUE="25" <!--%LEVEL:25%-->>25</OPTION>
+            <OPTION VALUE="26" <!--%LEVEL:26%-->>26</OPTION>
+            <OPTION VALUE="27" <!--%LEVEL:27%-->>27</OPTION>
+            <OPTION VALUE="28" <!--%LEVEL:28%-->>28</OPTION>
+            <OPTION VALUE="29" <!--%LEVEL:29%-->>29</OPTION>
+            <OPTION VALUE="30" <!--%LEVEL:30%-->>30</OPTION>
+          </SELECT>
+          <INPUT TYPE="SUBMIT" VALUE="Generate Treasure"><BR>
+					<TABLE BORDER=0><TR>
+						<TD CLASS="NORMAL"><A HREF="javascript:explainCoins()">Coins</A>:</TD>
+						<TD CLASS="NORMAL"><INPUT TYPE="TEXT" NAME="coins" VALUE="<!--%COINS%-->" SIZE="5">%&nbsp;&nbsp;</TD>
+						<TD CLASS="NORMAL"><A HREF="javascript:explainGoods()">Goods</A>:</TD>
+						<TD CLASS="NORMAL"><INPUT TYPE="TEXT" NAME="goods" VALUE="<!--%GOODS%-->" SIZE="5">%&nbsp;&nbsp;</TD>
+						<TD CLASS="NORMAL"><A HREF="javascript:explainItems()">Items</A>:</TD>
+						<TD CLASS="NORMAL"><INPUT TYPE="TEXT" NAME="items" VALUE="<!--%ITEMS%-->" SIZE="5">%</TD>
+					</TR></TABLE>
+					<HR SIZE="1">
+					<!--%COMMON:tem/commonAttributes-2.0.tem%-->
+          <INPUT TYPE="HIDDEN" NAME="mode" VALUE="random">
+        </FORM>
+
+				<P>
+        <A HREF="<!--%CGINAME%-->">Restart treasure generator.</A>
+        <P>
+        </DIV>
+
+        <TABLE BORDER=0 WIDTH=100% CELLPADDING=0 CELLSPACING=0><TR><TD CLASS="DIVIDER">
+          <TABLE BORDER=0 WIDTH=100% CELLPADDING=3 CELLSPACING=1><TR><TD CLASS="NORMAL">
+						<!--%TREASURE%-->
+          </TD></TR></TABLE>
+        </TD></TR></TABLE>
+
+				<P>
+
+        <SPAN CLASS="NORMAL">
+        This treasure generator has had <B><!--%COUNTER%--></B> hits since 14 Feb 2001!
+        </SPAN>
+        <!--%STARTFTR%-->
+        <HR SIZE="1">
+        <DIV CLASS="NORMAL">
+          <i>Dungeons & Dragons</i>&reg; and <i>D&D</i>&reg; are trademarks 
+          owned by <A HREF="http://www.wizards.com">Wizards of the Coast</A>.
+        </DIV>
+        <!--%ENDFTR%-->
+      </TD>
+    </TR>
+    <TR>
+      <TD VALIGN="BOTTOM" CLASS="NAVNORM" WIDTH="150">
+        <HR SIZE="1" WIDTH="150">
+        Copyright &copy; 2001<BR>
+        Jamis Buck.  All rights reserved.
+      </TD>
+    </TR>
+  </TABLE>
+
+   <IFRAME 
+     src="http://www.rpgplanet.com/dnd3e/generators/counter/counter.html" 
+     width="1"
+     height="1" 
+     frameborder="0" 
+     scrolling="no">
+   </IFRAME>
+
+</BODY>
+
+</HTML>
