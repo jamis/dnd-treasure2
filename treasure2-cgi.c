@@ -587,7 +587,7 @@ void buildSpecificType( BSKDatabase* db ) {
   int   i;
   int   showTreasure;
   char  buffer[1024];
-  wtTAG_t* tags[25];
+  wtTAG_t* tags[26];
 
 	char* minor;
 	char* medium;
@@ -620,6 +620,7 @@ void buildSpecificType( BSKDatabase* db ) {
 
   wtDELEGATE_t treasuref;
 	wtDELEGATE_t fillf;
+	wtDELEGATE_t showf;
 	wtDELEGATE_t intf;
 
 	wtIF_t ifMinor;
@@ -636,6 +637,7 @@ void buildSpecificType( BSKDatabase* db ) {
 	wtIF_t ifWeapon;
 	wtIF_t ifWondrous;
 
+	wtIF_t ifShowSource;
 	wtIF_t ifFill;
 	wtIF_t ifIntelligent;
 
@@ -644,6 +646,7 @@ void buildSpecificType( BSKDatabase* db ) {
 	char  maxValBuf[32];
 	char* fill;
 	char* intelligent;
+  char* showsource;
 
 	BSKExecOpts  opts;
 	BSKValue*    parameters[6];
@@ -657,6 +660,7 @@ void buildSpecificType( BSKDatabase* db ) {
 	intelligent = qValueDefault( "", "intelligent" );
 
 	fill = qValueDefault( "", "fillcoins" );
+  showsource = qValueDefault( "", "showsource" );
 	minValBuf[0] = maxValBuf[0] = 0;
 	if( minVal > 0 ) {
 		sprintf( minValBuf, "%g", minVal );
@@ -729,6 +733,7 @@ void buildSpecificType( BSKDatabase* db ) {
 	SETCONDITION( wondrousf, ifWondrous, wondrous, 0, "CHECKED" );
 
 	SETCONDITION( fillf, ifFill, fill, 0, "CHECKED" );
+	SETCONDITION( showf, ifShowSource, showsource, 0, "CHECKED" );
 	SETCONDITION( intf, ifIntelligent, intelligent, 0, "CHECKED" );
 
   treasuref.handler = displayTreasureHandler;
@@ -762,7 +767,8 @@ void buildSpecificType( BSKDatabase* db ) {
   tags[21] = wtTagDelegate( "FILL", &fillf );
 	tags[22] = wtTagDelegate( "INT", &intf );
 	tags[23] = wtTagDelegate( "SOURCES", &sources );
-	tags[24] = 0;
+	tags[24] = wtTagDelegate( "SHOWSOURCE", &showf );
+	tags[25] = 0;
 
   if( qiValue( "printable" ) ) {
     tem = getLookAndFeel( look, tnPRINTABLE );
