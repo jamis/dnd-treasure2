@@ -44,6 +44,15 @@
 								 "zero will result in no items being generated." );
 				}
 
+				function explainExclude() {
+					alert( "Standard/No Art/No Gems:\n\n" +
+					       "Standard: this option indicates that both gems and art objects should be generated normally.\n\n" +
+								 "No Art: this option indicates that art objects should never be generated.  Checking this will " +
+								 "increase the chance of gems being generated.\n\n" +
+								 "No Gems: this option indicates that gems should never be generated.  Checking this will " +
+								 "increase the chance of art objects being generated." );
+				}
+
 			//end-->
 		</SCRIPT>
   </HEAD>
@@ -196,6 +205,15 @@
 						<TD CLASS="NORMAL"><INPUT TYPE="TEXT" NAME="goods" VALUE="<!--%GOODS%-->" SIZE="5">%&nbsp;&nbsp;</TD>
 						<TD CLASS="NORMAL"><A HREF="javascript:explainItems()">Items</A>:</TD>
 						<TD CLASS="NORMAL"><INPUT TYPE="TEXT" NAME="items" VALUE="<!--%ITEMS%-->" SIZE="5">%</TD>
+					</TR><TR>
+					  <TD CLASS="NORMAL" COLSPAN="6">
+						  <INPUT TYPE="radio" NAME="exclude" VALUE="standard" <!--%EXCLUDE:standard%-->>
+							<A HREF="javascript:explainExclude()">Standard</A>&nbsp;&nbsp;
+						  <INPUT TYPE="radio" NAME="exclude" VALUE="art" <!--%EXCLUDE:art%-->>
+							<A HREF="javascript:explainExclude()">No Art</A>&nbsp;&nbsp;
+						  <INPUT TYPE="radio" NAME="exclude" VALUE="gems" <!--%EXCLUDE:gems%-->>
+							<A HREF="javascript:explainExclude()">No Gems</A>
+						</TD>
 					</TR></TABLE>
 					<HR SIZE="1">
 					<!--%COMMON:tem/commonAttributes-2.0.tem%-->

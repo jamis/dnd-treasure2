@@ -228,7 +228,7 @@ int displayTreasureHandler( wtSTREAM_t* stream, wtTAG_t** tags, wtGENERIC_t data
 
 		halt = BSKFALSE;
 		opts->rval = &retVal;
-		opts->errorHandler = myRTEHandler;
+		opts->errorHandler = BSKDefaultRuntimeErrorHandler;
 		opts->console = htmlConsole;
 		opts->halt = &halt;
 
@@ -268,6 +268,7 @@ void initializeOptions( BSKDatabase* db, BSKThing* options ) {
 	BSKBOOL   halt;
 	BSKUI32   id;
   BSKBOOL   intelligent;
+	BSKCHAR*  exclude;
 
 	halt = BSKFALSE;
 
@@ -279,8 +280,8 @@ void initializeOptions( BSKDatabase* db, BSKThing* options ) {
 	opts.parameterCount = 1;
 	opts.parameters = parameters;
 	opts.rval = &retVal;
-	opts.errorHandler = myRTEHandler;
-	opts.console = myConsole;
+	opts.errorHandler = BSKDefaultRuntimeErrorHandler;
+	opts.console = BSKDefaultConsole;
 	opts.userData = 0;
 	opts.halt = &halt;
 
@@ -314,19 +315,40 @@ void initializeOptions( BSKDatabase* db, BSKThing* options ) {
 									 BSKFindIdentifier( db->idTable, "optAlwaysIntelligent" ),
 									 intelligent,
 									 0 );
+
+	exclude = qValueDefault( "standard", "exclude" );
+	if( strcmp( exclude, "art" ) == 0 ) {
+		setAttributeNum( options,
+				             BSKFindIdentifier( db->idTable, "optExcludeArt" ),
+										 1,
+										 0 );
+	} else if( strcmp( exclude, "gems" ) == 0 ) {
+		setAttributeNum( options,
+				             BSKFindIdentifier( db->idTable, "optExcludeGems" ),
+										 1,
+										 0 );
+	}
 }
+
+#define SETCONDITION( cond, ift, data, n, txt )    (ift).value=(data); \
+                                                   (ift).neg=(n); \
+																									 (ift).text=(txt); \
+																									 (cond).handler = wtConditionalHandler; \
+																									 (cond).userData = &(ift)
 
 
 void randomTreasure( BSKDatabase* db ) {
 	int level;
   char *plevel;
   char buffer[256];
-  wtTAG_t* tags[14];
+  wtTAG_t* tags[15];
   wtIF_t ifeq;
 	wtIF_t iffill;
+	wtIF_t ifexclude;
   wtDELEGATE_t lf;
   wtDELEGATE_t tf;
   wtDELEGATE_t ff;
+	wtDELEGATE_t ef;
   BSKCHAR* tem;
 	BSKCHAR  minValBuf[32];
 	BSKCHAR  maxValBuf[32];
@@ -334,6 +356,7 @@ void randomTreasure( BSKDatabase* db ) {
 	BSKCHAR* coins;
 	BSKCHAR* goods;
 	BSKCHAR* items;
+	BSKCHAR* exclude;
 	BSKExecOpts opts;
 	BSKValue* parameters[6];
 	BSKValue  parms[6];
@@ -362,17 +385,11 @@ void randomTreasure( BSKDatabase* db ) {
 	coins = qValueDefault( "100", "coins" );
 	goods = qValueDefault( "100", "goods" );
 	items = qValueDefault( "100", "items" );
+	exclude = qValueDefault( "standard", "exclude" );
 
-  ifeq.value = plevel;
-  ifeq.neg = 0;
-  ifeq.text = "SELECTED";
-
-	iffill.value = fill;
-	iffill.neg = 0;
-	iffill.text = "CHECKED";
-
-  lf.handler = wtConditionalHandler;
-  lf.userData = &ifeq;
+	SETCONDITION( lf, ifeq, plevel, 0, "SELECTED" );
+	SETCONDITION( ff, iffill, fill, 0, "CHECKED" );
+	SETCONDITION( ef, ifexclude, exclude, 0, "CHECKED" );
 
   tf.handler = displayTreasureHandler;
 	if( level > 0 ) {
@@ -380,9 +397,6 @@ void randomTreasure( BSKDatabase* db ) {
 	} else {
 		tf.userData = 0;
 	}
-
-	ff.handler = wtConditionalHandler;
-	ff.userData = &iffill;
 
   commify( buffer, getCounter() );  
   tags[0] = wtTagReplace( "CGINAME", CGINAME );
@@ -398,7 +412,8 @@ void randomTreasure( BSKDatabase* db ) {
 	tags[10] = wtTagReplace( "GOODS", goods );
 	tags[11] = wtTagReplace( "ITEMS", items );
 	tags[12] = wtTagInclude( "COMMON", 0 );
-	tags[13] = 0;
+	tags[13] = wtTagDelegate( "EXCLUDE", &ef );
+	tags[14] = 0;
 
 	if( level > 0 ) {
 		BSKUI32 id;
@@ -442,12 +457,6 @@ void randomTreasure( BSKDatabase* db ) {
 	}
 }
 
-
-#define SETCONDITION( cond, ift, data, n, txt )    (ift).value=(data); \
-                                                   (ift).neg=(n); \
-																									 (ift).text=(txt); \
-																									 (cond).handler = wtConditionalHandler; \
-																									 (cond).userData = &(ift)
 
 void addStringToArray( BSKArray* array, BSKCHAR* string ) {
 	BSKValue temp;
