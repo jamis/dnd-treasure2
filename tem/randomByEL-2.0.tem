@@ -151,7 +151,7 @@
       <TD ROWSPAN="2" CLASS="NORMAL" WIDTH="10">&nbsp;</TD>
       <!-- Data section -->
       <TD ROWSPAN="2" WIDTH="620" CLASS="NORMAL" VALIGN="TOP">
-			  <H2>Treasure Generator 2.0</H2>
+			  <H2>Treasure Generator 2.01</H2>
 				<P>
         [ <B>Treasure By Encounter Level</B> | <A HREF="<!--%CGINAME%-->?mode=specific">Treasure By Item Type</A> ]
         <P>
