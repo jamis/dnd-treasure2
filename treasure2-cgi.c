@@ -108,14 +108,12 @@ void logAccess( char *mode, char *msg ) {
 void commify( char* buf, int num ) {
 	char temp[60];
 	char temp2[60];
-  char* p;
 	char* t;
 
 	sprintf( temp, "%d", num );
-	p = buf;
-	*p = 0;
+	buf[0] = 0;
 
-	t = temp;
+	t = temp + strlen( temp );
 	t -= 3;
 	while( t > temp ) {
     sprintf( temp2, ",%s%s", t, buf );
