@@ -42,6 +42,7 @@ char*  look;                /* the look and feel of the page */
 BSKFLOAT minVal;            /* minimum treasure value */
 BSKFLOAT maxVal;            /* maximum treasure value */
 BSKBOOL  fillCoins;         /* fill difference with coins */
+BSKBOOL  showSourceNames;   /* show the names of the different sources */
 
 typedef struct __lf__ LOOKANDFEEL;
 struct __lf__ {
@@ -370,6 +371,11 @@ void initializeOptions( BSKDatabase* db, BSKThing* options ) {
 										 0 );
 	}
 
+  setAttributeNum( options,
+                   BSKFindIdentifier( db->idTable, "optShowSourceName" ),
+                   showSourceNames,
+                   0 );
+
 	intelligent = ( *qValueDefault( "", "intelligent" ) == 'Y' );
 	setAttributeNum( options,
 									 BSKFindIdentifier( db->idTable, "optAlwaysIntelligent" ),
@@ -420,38 +426,43 @@ void randomTreasure( BSKDatabase* db ) {
 	int level;
   char *plevel;
   char buffer[256];
-  wtTAG_t* tags[16];
+  wtTAG_t* tags[17];
   wtIF_t ifeq;
 	wtIF_t iffill;
+	wtIF_t ifshowsource;
 	wtIF_t ifexclude;
   wtDELEGATE_t lf;
   wtDELEGATE_t tf;
   wtDELEGATE_t ff;
+  wtDELEGATE_t sf;
 	wtDELEGATE_t ef;
 	wtDELEGATE_t sources;
   BSKCHAR* tem;
 	BSKCHAR  minValBuf[32];
 	BSKCHAR  maxValBuf[32];
 	BSKCHAR* fill;
-	BSKCHAR* coins;
-	BSKCHAR* goods;
-	BSKCHAR* items;
+  BSKCHAR* showsource;
+	BSKCHAR coins[ 20 ];
+	BSKCHAR goods[ 20 ];
+	BSKCHAR items[ 20 ];
 	BSKCHAR* exclude;
 	BSKExecOpts opts;
 	BSKValue* parameters[6];
 	BSKValue  parms[6];
 	BSKThing* options;
 	BSKUI8 i;
+  int temp;
 
   plevel = qValueDefault( "", "level" );
 	level = atoi( plevel );
 	fill = qValueDefault( "", "fillcoins" );
+  showsource = qValueDefault( "", "showsource" );
 	minValBuf[0] = maxValBuf[0] = 0;
 	if( minVal > 0 ) {
-		sprintf( minValBuf, "%g", minVal );
+		sprintf( minValBuf, "%.2g", minVal );
   }
 	if( maxVal > 0 ) {
-		sprintf( maxValBuf, "%g", maxVal ); 
+		sprintf( maxValBuf, "%.2g", maxVal ); 
   }
   sprintf( buffer, "%d", level );
   sprintf( url, "%s?%s", CGINAME, getenv( "QUERY_STRING" ) );
@@ -462,13 +473,29 @@ void randomTreasure( BSKDatabase* db ) {
 		BSKStringReplace( url, "&seed=&", buffer, 0 );
 	}
 
-	coins = qValueDefault( "100", "coins" );
-	goods = qValueDefault( "100", "goods" );
-	items = qValueDefault( "100", "items" );
+	strncpy( coins, qValueDefault( "100", "coins" ), sizeof( coins ) );
+	strncpy( goods, qValueDefault( "100", "goods" ), sizeof( goods ) );
+	strncpy( items, qValueDefault( "100", "items" ), sizeof( items ) );
 	exclude = qValueDefault( "standard", "exclude" );
+
+  temp = atoi( coins );
+  if( temp < 0 ) temp = 0;
+  if( temp > 1000 ) temp = 1000;
+  sprintf( coins, "%d", temp );
+
+  temp = atoi( goods );
+  if( temp < 0 ) temp = 0;
+  if( temp > 1000 ) temp = 1000;
+  sprintf( goods, "%d", temp );
+
+  temp = atoi( items );
+  if( temp < 0 ) temp = 0;
+  if( temp > 1000 ) temp = 1000;
+  sprintf( items, "%d", temp );
 
 	SETCONDITION( lf, ifeq, plevel, 0, "SELECTED" );
 	SETCONDITION( ff, iffill, fill, 0, "CHECKED" );
+  SETCONDITION( sf, ifshowsource, showsource, 0, "CHECKED" );
 	SETCONDITION( ef, ifexclude, exclude, 0, "CHECKED" );
 
   tf.handler = displayTreasureHandler;
@@ -497,7 +524,8 @@ void randomTreasure( BSKDatabase* db ) {
 	tags[12] = wtTagInclude( "COMMON", 0 );
 	tags[13] = wtTagDelegate( "EXCLUDE", &ef );
 	tags[14] = wtTagDelegate( "SOURCES", &sources );
-	tags[15] = 0;
+	tags[15] = wtTagDelegate( "SHOWSOURCE", &sf );
+	tags[16] = 0;
 
 	if( level > 0 ) {
 		BSKUI32 id;
@@ -850,6 +878,7 @@ int main( int argc, char* argv[] ) {
   BSKSRand( seed );
 
 	fillCoins = ( *qValueDefault( "", "fillcoins" ) == 'Y' );
+  showSourceNames = ( *qValueDefault( "", "showsource" ) == 'Y' );
 	strcpy( minValBuf, qValueDefault( " ", "minval" ) );
 	strcpy( maxValBuf, qValueDefault( " ", "maxval" ) );
 
@@ -858,6 +887,11 @@ int main( int argc, char* argv[] ) {
 
   minVal = BSKAtoF( minValBuf );
   maxVal = BSKAtoF( maxValBuf );
+
+  if( minVal < 0 ) minVal = 0;
+  if( maxVal < minVal ) maxVal = minVal;
+  if( maxVal > 1000000.0 ) maxVal = 1000000.0;
+  if( minVal > 1000000.0 ) minVal = 1000000.0;
 
   if( strcmp( mode, "random" ) == 0 ) {
     randomTreasure( db );

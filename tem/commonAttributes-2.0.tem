@@ -58,6 +58,13 @@
 						 "draw from by clicking on the name of the source in the list.  To select multiple " +
 						 "sources, hold down the <ctrl> key while clicking." );
 		}
+
+		function explainShowSource() {
+			alert( "Show Source Names:\n\n" +
+						 "When checked, this will cause all items to display with the name of the source " +
+             "in which they are defined.  This is useful if you are selecting from a variety " +
+             "of sources." );
+		}
 	//end-->
 </SCRIPT>
 
@@ -70,6 +77,8 @@
 							<INPUT TYPE="TEXT" NAME="maxval" VALUE="<!--%MAXIMUMVALUE%-->" SIZE=8> gp<BR>
 						<INPUT TYPE="CHECKBOX" NAME="fillcoins" VALUE="Y" <!--%FILL:Y%-->>
 							<A HREF="javascript:explainFill()">Fill Difference With Coins</A><BR>
+						<INPUT TYPE="CHECKBOX" NAME="showsource" VALUE="Y" <!--%SHOWSOURCE:Y%-->>
+              <a href="javascript:explainShowSource()">Show Source Names </a><BR>
 					</td><td class="NORMAL">
 					  <a href="javascript:explainSources()">Sources:</a><br />
 						<SELECT NAME="sources" MULTIPLE SIZE="5">
