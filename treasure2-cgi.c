@@ -211,6 +211,67 @@ BSKI32 htmlConsole( BSKCHAR* msg, BSKExecutionEnvironment* env, BSKNOTYPE data )
 }
 
 
+int sourceIsSelected( char* src ) {
+	char* v;
+
+	v = qValueFirst( "sources" );
+	while( v != 0 ) {
+		if( strcmp( v, src ) == 0 ) {
+			return 1;
+		}
+		v = qValueNext();
+	}
+
+	return 0;
+}
+
+
+int displaySourceList( wtSTREAM_t* stream, wtTAG_t** tags, wtGENERIC_t data, char* other ) {
+  BSKUI32 id;
+	BSKDatabase* db;
+	BSKCHAR ident[128];
+
+	db = (BSKDatabase*)data;
+	id = BSKFindIdentifier( db->idTable, "groupAllSources" );
+	if( id > 0 ) {
+		BSKCategory* c;
+
+		c = BSKFindCategory( db, id );
+		if( c != 0 ) {
+			BSKCategoryEntry* e;
+
+			id = BSKFindIdentifier( db->idTable, "name" );
+			for( e = BSKCategoryGetFirstMember( c ); e != 0; e = e->next ) {
+				BSKAttribute* attr;
+				BSKThing* thing;
+				BSKCHAR* name;
+
+				if( e->member == 0 ) {
+					continue;
+				}
+
+				thing = (BSKThing*)BSKCategoryEntryGetMember( e );
+				BSKGetIdentifier( db->idTable, BSKThingGetID( thing ), ident, sizeof( ident ) );
+
+				attr = BSKGetAttributeOf( thing, id );
+				if( attr == 0 ) {
+					continue;
+				}
+
+				name = BSKValueGetString( &(attr->value) );
+
+				printf( "<option value=\"%s\"%s>%s</option>\n",
+						    ident,
+								( sourceIsSelected( ident ) ? " selected" : "" ),
+								name );
+			}
+		}
+	}
+
+	return 0;
+}
+
+
 int displayTreasureHandler( wtSTREAM_t* stream, wtTAG_t** tags, wtGENERIC_t data, char* other ) {
 	BSKExecOpts* opts;
 
@@ -267,6 +328,7 @@ void initializeOptions( BSKDatabase* db, BSKThing* options ) {
 	BSKUI32   id;
   BSKBOOL   intelligent;
 	BSKCHAR*  exclude;
+	BSKCHAR*  source;
 
 	halt = BSKFALSE;
 
@@ -326,6 +388,25 @@ void initializeOptions( BSKDatabase* db, BSKThing* options ) {
 										 1,
 										 0 );
 	}
+
+	source = qValueFirst( "sources" );
+	if( source != 0 ) {
+		BSKCategory* optUseSources;
+		BSKValue val;
+
+		optUseSources = BSKNewCategory( 0 );
+		while( source != 0 ) {
+			id = BSKFindIdentifier( db->idTable, source );
+			if( id > 0 ) {
+				BSKAddToCategory( optUseSources, 1, BSKFindThing( db, id ) );
+			}
+			source = qValueNext();
+		}
+
+		id = BSKFindIdentifier( db->idTable, "optUseSources" );
+		BSKValueSetCategory( &val, optUseSources );
+		BSKAddAttributeTo( options, id, &val );
+	}
 }
 
 #define SETCONDITION( cond, ift, data, n, txt )    (ift).value=(data); \
@@ -339,7 +420,7 @@ void randomTreasure( BSKDatabase* db ) {
 	int level;
   char *plevel;
   char buffer[256];
-  wtTAG_t* tags[15];
+  wtTAG_t* tags[16];
   wtIF_t ifeq;
 	wtIF_t iffill;
 	wtIF_t ifexclude;
@@ -347,6 +428,7 @@ void randomTreasure( BSKDatabase* db ) {
   wtDELEGATE_t tf;
   wtDELEGATE_t ff;
 	wtDELEGATE_t ef;
+	wtDELEGATE_t sources;
   BSKCHAR* tem;
 	BSKCHAR  minValBuf[32];
 	BSKCHAR  maxValBuf[32];
@@ -396,6 +478,9 @@ void randomTreasure( BSKDatabase* db ) {
 		tf.userData = 0;
 	}
 
+	sources.handler = displaySourceList;
+	sources.userData = db;
+
   commify( buffer, getCounter() );  
   tags[0] = wtTagReplace( "CGINAME", CGINAME );
   tags[1] = wtTagReplace( "COUNTER", buffer );
@@ -411,7 +496,8 @@ void randomTreasure( BSKDatabase* db ) {
 	tags[11] = wtTagReplace( "ITEMS", items );
 	tags[12] = wtTagInclude( "COMMON", 0 );
 	tags[13] = wtTagDelegate( "EXCLUDE", &ef );
-	tags[14] = 0;
+	tags[14] = wtTagDelegate( "SOURCES", &sources );
+	tags[15] = 0;
 
 	if( level > 0 ) {
 		BSKUI32 id;
@@ -473,7 +559,7 @@ void buildSpecificType( BSKDatabase* db ) {
   int   i;
   int   showTreasure;
   char  buffer[1024];
-  wtTAG_t* tags[24];
+  wtTAG_t* tags[25];
 
 	char* minor;
 	char* medium;
@@ -492,6 +578,7 @@ void buildSpecificType( BSKDatabase* db ) {
 	wtDELEGATE_t minorf;
 	wtDELEGATE_t mediumf;
 	wtDELEGATE_t majorf;
+	wtDELEGATE_t sources;
 
 	wtDELEGATE_t armorf;
 	wtDELEGATE_t potionf;
@@ -623,6 +710,9 @@ void buildSpecificType( BSKDatabase* db ) {
 		treasuref.userData = 0;
 	}
 
+	sources.handler = displaySourceList;
+	sources.userData = db;
+
   tags[3] = wtTagDelegate( "MINOR", &minorf );
 	tags[4] = wtTagDelegate( "MEDIUM", &mediumf );
 	tags[5] = wtTagDelegate( "MAJOR", &majorf );
@@ -643,7 +733,8 @@ void buildSpecificType( BSKDatabase* db ) {
   tags[20] = wtTagReplace( "MAXIMUMVALUE", maxValBuf );
   tags[21] = wtTagDelegate( "FILL", &fillf );
 	tags[22] = wtTagDelegate( "INT", &intf );
-	tags[23] = 0;
+	tags[23] = wtTagDelegate( "SOURCES", &sources );
+	tags[24] = 0;
 
   if( qiValue( "printable" ) ) {
     tem = getLookAndFeel( look, tnPRINTABLE );
